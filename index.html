@@ -2,26 +2,38 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=SUSE:wght@100..800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="css/style.css" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Password Generator</title>
   </head>
   <body>
-    <div>
+    <div class="header">
       <h1>Password Generator</h1>
       <button id="theme-toggle-btn">Toggle Theme</button>
     </div>
     <div id="output"></div>
-
-    <button id="generate-btn">Generate</button>
-
+    <div class="buttons">
+      <button id="generate-btn">Generate Password</button>
+      <button id="copy-btn">Copy Password</button>
+    </div>
     <ul>
       <li>
-        <input type="checkbox" id="exclude-numbers" />
-        <label for="exclude-numbers">Exclude Numbers</label>
+        <input type="checkbox" id="include-numbers" class="styled-checkbox" />
+        <label for="include-numbers">Include Numbers</label>
       </li>
       <li>
-        <input type="checkbox" id="exclude-special-chars" />
-        <label for="exclude-special-chars">Exclude Special Characters</label>
+        <input
+          type="checkbox"
+          id="include-special-chars"
+          class="styled-checkbox"
+        />
+        <label for="include-special-chars">Include Special Characters</label>
       </li>
     </ul>
 
