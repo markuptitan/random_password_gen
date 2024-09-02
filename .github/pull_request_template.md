@@ -1,59 +1,38 @@
-# Merge All Features into `main` Branch
+# Opening Pull Request
 
-## Description
+**Title:** 
 
-This pull request consolidates all the features from different branches into the `dev` branch. The `dev` branch will be used for further testing and development before merging into `main`. Below is a summary of the features included in this merge:
+<!-- Briefly describe the changes or feature. -->
 
-## Features Included:
+**Description:**
 
-- [ ] **Password Generation**
+<!-- Provide a brief summary of what this PR does. Explain why these changes are being made and any context that may be helpful. -->
 
-  - Implemented core functionality to generate random passwords with customizable length and options to exclude numbers and special characters.
+**Contributor Information:**
 
-- [ ] **Responsive Design**
+- **Name**: <!-- Your name -->
+- **Role**: <!-- Your role or title (e.g., Developer, Designer) -->
+- **Company/Organization**: <!-- Your company or organization (if applicable) -->
 
-  - Ensured the app is usable across mobile and desktop devices with a clean and intuitive layout.
+**Changes:**
 
-- [ ] **Dark Theme**
+- [ ] **Feature 1**: <!-- Describe the change or feature -->
+- [ ] **Feature 2**: <!-- Describe the change or feature -->
+- [ ] **Feature 3**: <!-- Describe the change or feature -->
 
-  - Added support for a dark mode that users can toggle on and off.
+**Testing:**
 
-- [ ] **Theme Toggle**
+<!-- Describe how the changes have been tested. Include any relevant details about the testing environment or methods used. -->
 
-  - Implemented a button or switch for users to switch between light and dark themes.
+**Checklist:**
 
-- [ ] **Password Strength Indicator**
+- [ ] I have reviewed the code for quality and consistency.
+- [ ] I have tested the changes thoroughly.
+- [ ] I have updated the documentation if necessary.
+- [ ] I have resolved any merge conflicts with the target branch.
+- [ ] I have followed the project's contribution guidelines.
 
-  - Added a strength indicator to show how strong the generated password is (e.g., weak, medium, strong).
+**Additional Notes:**
 
-- [ ] **Password History**
+<!-- Include any additional information or context that reviewers might need. -->
 
-  - Added functionality to view and copy previously generated passwords during the session.
-
-- [ ] **Custom Character Sets**
-
-  - Provided an option to customize the character set used in password generation.
-
-- [ ] **API Integration**
-
-  - Integrated with the external password generator API to fetch passwords based on user inputs.
-
-- [ ] **Unit Testing**
-  - Implemented unit tests to ensure that the password generation logic works correctly.
-
-## How Has This Been Tested?
-
-<!-- Describe the tests that were performed to verify the changes. Include details about the environment and testing frameworks used. -->
-
-## Checklist:
-
-- [ ] I have reviewed the code changes and confirmed they meet the project requirements.
-- [ ] I have tested all the new features and confirmed they work as expected.
-- [ ] I have ensured the app is responsive and works well across different devices.
-- [ ] I have updated the documentation to reflect the new features and changes.
-- [ ] I have checked for and resolved any merge conflicts with the `dev` branch.
-- [ ] I have added or updated unit tests as necessary.
-
-## Additional Notes:
-
-<!-- Include any additional context or information relevant to the pull request. -->
