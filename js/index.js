@@ -28,6 +28,24 @@ const generatePassword = (
     });
 };
 
+const copyToClipboard = (text) => {
+  navigator.clipboard
+    .writeText(text)
+    .then(() => {
+      console.log("Password copied to clipboard");
+      alert("Password copied to clipboard");
+    })
+    .catch((err) => {
+      console.error("Failed to copy password:", err);
+      alert(err);
+    });
+};
+
+document.getElementById("copy-btn").addEventListener("click", () => {
+  const password = document.getElementById("output").textContent;
+  copyToClipboard(password);
+});
+
 document.getElementById("generate-btn").addEventListener("click", () => {
   const excludeNumbers = document.getElementById("exclude-numbers").checked;
   const excludeSpecialChars = document.getElementById(
