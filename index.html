@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Password Generator</title>
+  </head>
+  <body>
+    <div>
+      <h1>Password Generator</h1>
+      <button id="theme-toggle-btn">Toggle Theme</button>
+    </div>
+    <div id="output"></div>
+
+    <button id="generate-btn">Generate</button>
+
+    <ul>
+      <li>
+        <input type="checkbox" id="exclude-numbers" />
+        <label for="exclude-numbers">Exclude Numbers</label>
+      </li>
+      <li>
+        <input type="checkbox" id="exclude-special-chars" />
+        <label for="exclude-special-chars">Exclude Special Characters</label>
+      </li>
+    </ul>
+
+    <script src="js/index.js"></script>
+  </body>
+</html>
