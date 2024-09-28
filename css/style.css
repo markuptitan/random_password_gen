@@ -142,6 +142,7 @@ ul li {
   width: 100%;
   max-width: 37.5em; /* Use em for max-width */
   margin: 0 auto;
+  text-align: center;
   padding: 1em; /* Use em for padding */
   margin-top: 0.625em; /* Use em for margin-top */
   box-sizing: border-box;
