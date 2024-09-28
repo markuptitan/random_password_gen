@@ -29,16 +29,32 @@ const generatePassword = (
 };
 
 const copyToClipboard = (text) => {
-  navigator.clipboard
-    .writeText(text)
-    .then(() => {
-      console.log("Password copied to clipboard");
+  if (navigator.clipboard) {
+    navigator.clipboard
+      .writeText(text)
+      .then(() => {
+        console.log("Password copied to clipboard");
+        alert("Password copied to clipboard");
+      })
+      .catch((err) => {
+        console.error("Failed to copy password:", err);
+        alert(err);
+      });
+  } else {
+    // Fallback for older browsers or mobile issues
+    const textarea = document.createElement("textarea");
+    textarea.value = text;
+    document.body.appendChild(textarea);
+    textarea.select();
+    try {
+      document.execCommand("copy");
       alert("Password copied to clipboard");
-    })
-    .catch((err) => {
+    } catch (err) {
       console.error("Failed to copy password:", err);
       alert(err);
-    });
+    }
+    document.body.removeChild(textarea);
+  }
 };
 
 document.getElementById("copy-btn").addEventListener("click", () => {
