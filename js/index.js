@@ -24,7 +24,11 @@ const generatePassword = (
       document.getElementById("output").textContent = data.random_password;
     })
     .catch((error) => {
-      alert("Something went wrong");
+      Swal.fire({
+        title: "Failure!",
+        text: "An error occurred while generating the password.",
+        icon: "error",
+      });
     });
 };
 
@@ -34,11 +38,19 @@ const copyToClipboard = (text) => {
       .writeText(text)
       .then(() => {
         console.log("Password copied to clipboard");
-        alert("Password copied to clipboard");
+        Swal.fire({
+          title: "Success!",
+          text: "Password copied to clipboard.",
+          icon: "success",
+        });
       })
       .catch((err) => {
         console.error("Failed to copy password:", err);
-        alert(err);
+        Swal.fire({
+          title: "Failure!",
+          text: "There was a problem copying the password to the clipboard.",
+          icon: "error",
+        });
       });
   } else {
     // Fallback for older browsers or mobile issues
@@ -48,10 +60,18 @@ const copyToClipboard = (text) => {
     textarea.select();
     try {
       document.execCommand("copy");
-      alert("Password copied to clipboard");
+      Swal.fire({
+        title: "Success!",
+        text: "Password copied to clipboard.",
+        icon: "success",
+      });
     } catch (err) {
       console.error("Failed to copy password:", err);
-      alert(err);
+      Swal.fire({
+        title: "Failure!",
+        text: "There was a problem copying the password to the clipboard.",
+        icon: "error",
+      });
     }
     document.body.removeChild(textarea);
   }
