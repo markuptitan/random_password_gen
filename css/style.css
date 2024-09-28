@@ -1,5 +1,10 @@
 :root {
   font-size: 16px; /* Set the root font size */
+  --background-color: #ffffff;
+  --text-color: #333;
+  --header-background: #f0f0f0;
+  --button-background: #007bff;
+  --button-text: #ffffff;
 }
 
 * {
@@ -13,6 +18,8 @@ body {
   height: 100%;
   line-height: 1.6;
   font-family: "SUSE";
+  background-color: var(--background-color);
+  color: var(--text-color);
 }
 
 ol,
@@ -40,7 +47,7 @@ ul li {
   justify-content: space-between;
   align-items: center;
   padding: 1em 2em; /* Use em for padding */
-  background-color: #f0f0f0;
+  background-color: var(--header-background);
   border-bottom: 2px solid #ddd;
   border-radius: 0.5em; /* Use em for border-radius */
   box-shadow: 0 0.25em 0.5em rgba(0, 0, 0, 0.1); /* Use em for box-shadow */
