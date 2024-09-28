@@ -15,11 +15,19 @@
 
 html,
 body {
-  height: 100%;
+  height: 100vh !important;
   line-height: 1.6;
   font-family: "SUSE";
   background-color: var(--background-color);
   color: var(--text-color);
+}
+
+body.dark-mode {
+  --background-color: #121212;
+  --text-color: #ffffff;
+  --header-background: #1c1c1c;
+  --button-background: #333;
+  --button-text: #ffffff;
 }
 
 ol,
@@ -49,13 +57,14 @@ ul li {
   padding: 1em 2em; /* Use em for padding */
   background-color: var(--header-background);
   border-bottom: 2px solid #ddd;
-  border-radius: 0.5em; /* Use em for border-radius */
+  color: var(--text-color);
   box-shadow: 0 0.25em 0.5em rgba(0, 0, 0, 0.1); /* Use em for box-shadow */
 }
 
 .header h1 {
   font-size: 1.5em; /* Use em for font-size */
   color: #333;
+  color: var(--text-color);
   margin: 0;
 }
 
@@ -106,7 +115,7 @@ ul li {
   transform: translateY(-50%);
   width: 1.5em; /* Use em for width and height */
   height: 1.5em;
-  border: 0.125em solid #444; /* Use em for border-width */
+  border: 0.125em solid var(--text-color); /* Use em for border-width */
   border-radius: 50%;
   background-color: transparent;
   transition: background-color 0.3s, border-color 0.3s;
@@ -119,11 +128,11 @@ ul li {
 
 .styled-checkbox:checked + label {
   color: #007bff;
-  background-color: #e0e0e0;
+  background-color: var(--text-color);
 }
 
 .styled-checkbox:not(:checked) + label {
-  background-color: #f0f0f0;
+  background-color: var(--header-background);
   border-radius: 0.5em; /* Use em for border-radius */
 }
 
@@ -195,4 +204,17 @@ ul li {
 #copy-btn:hover {
   background-color: #b0b7bd;
   transform: scale(1.05);
+}
+
+.status-message {
+  margin-top: 10px;
+  font-size: 16px;
+}
+
+.status-message.success {
+  color: green;
+}
+
+.status-message.error {
+  color: red;
 }

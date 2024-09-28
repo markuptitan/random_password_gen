@@ -1,6 +1,23 @@
 const apiKey = "VqX5koegh8IRelt4umtTWA==IVC0lk1bsYeyyfoS";
 const apiUrl = "https://api.api-ninjas.com/v1/passwordgenerator";
 
+// Function for printing out success status
+const displayStatusMessage = (message, isSuccess) => {
+  const statusMessage = document.getElementById("statusMessage");
+  statusMessage.textContent = message;
+  statusMessage.classList.remove("success", "error");
+  if (isSuccess) {
+    statusMessage.classList.add("success");
+  } else {
+    statusMessage.classList.add("error");
+  }
+  setTimeout(() => {
+    statusMessage.textContent = "";
+    statusMessage.classList.remove("success", "error");
+  }, 6000);
+};
+
+// Function for password generation logic
 const generatePassword = (
   excludeNumbers = false,
   excludeSpecialChars = false
@@ -24,33 +41,32 @@ const generatePassword = (
       document.getElementById("output").textContent = data.random_password;
     })
     .catch((error) => {
-      Swal.fire({
-        title: "Failure!",
-        text: "An error occurred while generating the password.",
-        icon: "error",
-      });
+      console.error("Failed to fetch password:", error);
+      displayStatusMessage(
+        "There was a problem generating the password",
+        false
+      );
     });
 };
 
 const copyToClipboard = (text) => {
+  if (text.length === 0) {
+    displayStatusMessage("There is no password currently generated.", false);
+    return;
+  }
   if (navigator.clipboard) {
     navigator.clipboard
       .writeText(text)
       .then(() => {
-        console.log("Password copied to clipboard");
-        Swal.fire({
-          title: "Success!",
-          text: "Password copied to clipboard.",
-          icon: "success",
-        });
+        console.log("success!");
+        displayStatusMessage("Password copied to clipboard", true);
       })
       .catch((err) => {
         console.error("Failed to copy password:", err);
-        Swal.fire({
-          title: "Failure!",
-          text: "There was a problem copying the password to the clipboard.",
-          icon: "error",
-        });
+        displayStatusMessage(
+          "There was a problem generating the password",
+          false
+        );
       });
   } else {
     // Fallback for older browsers or mobile issues
@@ -60,18 +76,11 @@ const copyToClipboard = (text) => {
     textarea.select();
     try {
       document.execCommand("copy");
-      Swal.fire({
-        title: "Success!",
-        text: "Password copied to clipboard.",
-        icon: "success",
-      });
+      console.log("success!");
+      displayStatusMessage("Password copied to clipboard", true);
     } catch (err) {
       console.error("Failed to copy password:", err);
-      Swal.fire({
-        title: "Failure!",
-        text: "There was a problem copying the password to the clipboard.",
-        icon: "error",
-      });
+      displayStatusMessage("Failed to copy password", false);
     }
     document.body.removeChild(textarea);
   }
@@ -88,4 +97,23 @@ document.getElementById("generate-btn").addEventListener("click", () => {
     "exclude-special-chars"
   ).checked;
   generatePassword(excludeNumbers, excludeSpecialChars);
+});
+
+// Dark mode logic
+const toggleButton = document.getElementById("theme-toggle-btn");
+
+toggleButton.addEventListener("click", () => {
+  document.body.classList.toggle("dark-mode");
+  if (document.body.classList.contains("dark-mode")) {
+    localStorage.setItem("theme", "dark");
+  } else {
+    localStorage.setItem("theme", "light");
+  }
+});
+
+window.addEventListener("load", () => {
+  const savedTheme = localStorage.getItem("theme");
+  if (savedTheme === "dark") {
+    document.body.classList.add("dark-mode");
+  }
 });
