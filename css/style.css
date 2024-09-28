@@ -1,0 +1,191 @@
+:root {
+  font-size: 16px; /* Set the root font size */
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+body {
+  height: 100%;
+  line-height: 1.6;
+  font-family: "SUSE";
+}
+
+ol,
+ul {
+  list-style: none;
+}
+
+button,
+input,
+textarea,
+select {
+  border: none;
+  outline: none;
+}
+
+ul li {
+  margin-bottom: 1em; /* Use em for margin */
+  width: 97%;
+  margin-left: 1.5%;
+  margin-right: 1.5%;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1em 2em; /* Use em for padding */
+  background-color: #f0f0f0;
+  border-bottom: 2px solid #ddd;
+  border-radius: 0.5em; /* Use em for border-radius */
+  box-shadow: 0 0.25em 0.5em rgba(0, 0, 0, 0.1); /* Use em for box-shadow */
+}
+
+.header h1 {
+  font-size: 1.5em; /* Use em for font-size */
+  color: #333;
+  margin: 0;
+}
+
+#theme-toggle-btn {
+  padding: 0.625em 1.25em; /* Use em for padding */
+  font-size: 1em; /* Use em for font-size */
+  color: #fff;
+  background-color: #007bff;
+  border: none;
+  border-radius: 0.3125em; /* Use em for border-radius */
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.3s;
+}
+
+#theme-toggle-btn:hover {
+  background-color: #0056b3;
+  transform: scale(1.05);
+}
+
+#theme-toggle-btn:focus {
+  outline: none;
+  box-shadow: 0 0 0 0.125em rgba(0, 123, 255, 0.5); /* Use em for box-shadow */
+}
+
+.styled-checkbox {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+}
+
+.styled-checkbox + label {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  position: relative;
+  padding: 0.625em 2.5em; /* Use em for padding */
+  font-size: 1.125em; /* Use em for font-size */
+  background-color: #f0f0f0;
+  border-radius: 0.5em; /* Use em for border-radius */
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.styled-checkbox + label::before {
+  content: "";
+  position: absolute;
+  left: 0.625em; /* Use em for left */
+  top: 50%;
+  transform: translateY(-50%);
+  width: 1.5em; /* Use em for width and height */
+  height: 1.5em;
+  border: 0.125em solid #444; /* Use em for border-width */
+  border-radius: 50%;
+  background-color: transparent;
+  transition: background-color 0.3s, border-color 0.3s;
+}
+
+.styled-checkbox:checked + label::before {
+  background-color: #007bff;
+  border-color: #007bff;
+}
+
+.styled-checkbox:checked + label {
+  color: #007bff;
+  background-color: #e0e0e0;
+}
+
+.styled-checkbox:not(:checked) + label {
+  background-color: #f0f0f0;
+  border-radius: 0.5em; /* Use em for border-radius */
+}
+
+#output {
+  background-color: #ccc4c473;
+  height: 4.6875em; /* Use em for height */
+  width: 100%;
+  max-width: 37.5em; /* Use em for max-width */
+  margin: 0 auto;
+  padding: 1em; /* Use em for padding */
+  margin-top: 0.625em; /* Use em for margin-top */
+  box-sizing: border-box;
+  border: 0.125em solid #ccc; /* Use em for border-width */
+  border-radius: 0.5em; /* Use em for border-radius */
+  overflow: auto;
+}
+
+@media (max-width: 37.5em) {
+  #output {
+    height: 4.6875em;
+    width: 90%;
+  }
+}
+
+@media (max-width: 25em) {
+  #output {
+    height: 7.5em;
+    width: 100%;
+  }
+}
+
+.buttons {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 0.625em; /* Use em for margin-top */
+  margin: 0.625em; /* Use em for margin */
+  width: 80%;
+  margin-left: 10%;
+  margin-right: 10%;
+}
+
+#generate-btn {
+  padding: 0.625em 1.25em; /* Use em for padding */
+  font-size: 1em; /* Use em for font-size */
+  color: #fff;
+  background-color: #007bff;
+  border: none;
+  border-radius: 0.3125em; /* Use em for border-radius */
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.3s;
+}
+
+#generate-btn:hover {
+  background-color: #0056b3;
+  transform: scale(1.05);
+}
+
+#copy-btn {
+  padding: 0.625em 1.25em; /* Use em for padding */
+  font-size: 1em; /* Use em for font-size */
+  color: black;
+  background-color: #c8cfd6;
+  border: none;
+  border-radius: 0.3125em; /* Use em for border-radius */
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.3s;
+}
+
+#copy-btn:hover {
+  background-color: #b0b7bd;
+  transform: scale(1.05);
+}
