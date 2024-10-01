@@ -1,22 +1,6 @@
 const apiKey = "VqX5koegh8IRelt4umtTWA==IVC0lk1bsYeyyfoS";
 const apiUrl = "https://api.api-ninjas.com/v1/passwordgenerator";
 
-// Function for printing out success status
-const displayStatusMessage = (message, isSuccess) => {
-  const statusMessage = document.getElementById("statusMessage");
-  statusMessage.textContent = message;
-  statusMessage.classList.remove("success", "error");
-  if (isSuccess) {
-    statusMessage.classList.add("success");
-  } else {
-    statusMessage.classList.add("error");
-  }
-  setTimeout(() => {
-    statusMessage.textContent = "";
-    statusMessage.classList.remove("success", "error");
-  }, 6000);
-};
-
 // Function for password generation logic
 const generatePassword = (
   excludeNumbers = false,
@@ -42,16 +26,23 @@ const generatePassword = (
     })
     .catch((error) => {
       console.error("Failed to fetch password:", error);
-      displayStatusMessage(
-        "There was a problem generating the password",
-        false
-      );
+      Swal.fire({
+        title: "Error!",
+        text: "There was an error generating the password",
+        icon: "error",
+        confirmButtonText: "Try again",
+      });
     });
 };
 
 const copyToClipboard = (text) => {
   if (text.length === 0) {
-    displayStatusMessage("There is no password currently generated.", false);
+    Swal.fire({
+      title: "Error!",
+      text: "You can not copy an empty password",
+      icon: "info",
+      confirmButtonText: "Try again",
+    });
     return;
   }
   if (navigator.clipboard) {
@@ -59,14 +50,21 @@ const copyToClipboard = (text) => {
       .writeText(text)
       .then(() => {
         console.log("success!");
-        displayStatusMessage("Password copied to clipboard", true);
+        Swal.fire({
+          title: "Thank you!",
+          text: "Password has been copied to clipboard.",
+          icon: "success",
+          confirmButtonText: "OK",
+        });
       })
       .catch((err) => {
         console.error("Failed to copy password:", err);
-        displayStatusMessage(
-          "There was a problem generating the password",
-          false
-        );
+        Swal.fire({
+          title: "Error!",
+          text: "There was an error generating the password",
+          icon: "error",
+          confirmButtonText: "Try again",
+        });
       });
   } else {
     // Fallback for older browsers or mobile issues
@@ -77,10 +75,20 @@ const copyToClipboard = (text) => {
     try {
       document.execCommand("copy");
       console.log("success!");
-      displayStatusMessage("Password copied to clipboard", true);
+      Swal.fire({
+        title: "Thank you!",
+        text: "Password has been copied to clipboard.",
+        icon: "success",
+        confirmButtonText: "OK",
+      });
     } catch (err) {
       console.error("Failed to copy password:", err);
-      displayStatusMessage("Failed to copy password", false);
+      Swal.fire({
+        title: "Error!",
+        text: "There was an error generating the password",
+        icon: "error",
+        confirmButtonText: "Try again",
+      });
     }
     document.body.removeChild(textarea);
   }
@@ -101,19 +109,11 @@ document.getElementById("generate-btn").addEventListener("click", () => {
 
 // Dark mode logic
 const toggleButton = document.getElementById("theme-toggle-btn");
-
+const savedTheme = localStorage.getItem("theme") || "light";
+document.documentElement.setAttribute("data-theme", savedTheme);
 toggleButton.addEventListener("click", () => {
-  document.body.classList.toggle("dark-mode");
-  if (document.body.classList.contains("dark-mode")) {
-    localStorage.setItem("theme", "dark");
-  } else {
-    localStorage.setItem("theme", "light");
-  }
-});
-
-window.addEventListener("load", () => {
-  const savedTheme = localStorage.getItem("theme");
-  if (savedTheme === "dark") {
-    document.body.classList.add("dark-mode");
-  }
+  const currentTheme = document.documentElement.getAttribute("data-theme");
+  const newTheme = currentTheme === "dark" ? "light" : "dark";
+  document.documentElement.setAttribute("data-theme", newTheme);
+  localStorage.setItem("theme", newTheme);
 });
