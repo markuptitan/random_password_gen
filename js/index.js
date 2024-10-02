@@ -38,7 +38,7 @@ const generatePassword = (
 const copyToClipboard = (text) => {
   if (text.length === 0) {
     Swal.fire({
-      title: "Error!",
+      title: "Whoopsie!",
       text: "You can not copy an empty password",
       icon: "info",
       confirmButtonText: "Try again",
@@ -51,7 +51,7 @@ const copyToClipboard = (text) => {
       .then(() => {
         console.log("success!");
         Swal.fire({
-          title: "Thank you!",
+          title: "Success!",
           text: "Password has been copied to clipboard.",
           icon: "success",
           confirmButtonText: "OK",
@@ -76,7 +76,7 @@ const copyToClipboard = (text) => {
       document.execCommand("copy");
       console.log("success!");
       Swal.fire({
-        title: "Thank you!",
+        title: "Success!",
         text: "Password has been copied to clipboard.",
         icon: "success",
         confirmButtonText: "OK",
